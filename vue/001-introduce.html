@@ -1,28 +1,88 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-	<meta charset="UTF-8">  
-	<title>Document</title>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
 
-	<script type="text/javascript">  
+	<script type="text/javascript">
+		var app = null;
+		var app2 = null;
+		var app3=null;
+			var app4 =null;
+		function bodyOnload (){
 
-		function bodyOnload (){  
+			app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue.js!'
+				}
+			});
+			app2 = new Vue({
+				el: '#app-2',
+				data: {
+					message: '页面加载于 ' + new Date().toLocaleString()
+				}
+			});
+			app3 = new Vue({
+				el: '#app-3',
+				data: {
+					seen: true
+				}
+			});
 
-			new Vue({  
-				el: '#app',  
-				data: {  
-					message: 'Hello Vue.js!'  
-				}  
-			});  
-		}  
-	</script>  
-</head>  
-<body onload="bodyOnload();">  
-	<div id="app">  
-		{{message}}  
-	</div>  
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>  
-</body>  
-</html>  
+			app4 = new Vue({
+			  el: '#app-4',
+			  data: {
+			    todos: [
+			      { text: '学习 JavaScript' },
+			      { text: '学习 Vue' },
+			      { text: '整个牛项目' }
+			    ]
+			  }
+			});
+		}
+	</script>
+</head>
+<body onload="bodyOnload();">
+	<div id="app">
+		{{ message }}
+	</div>
 
-<!-- https://cn.vuejs.org/v2/guide/index.html#声明式渲染 -->
+	<div id="app-2">
+		<span v-bind:title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>
+
+	<div id="app-3">
+		<p v-if="seen">现在你看到我了</p>
+	</div>
+	<div id="app-4">
+	  <ol>
+	    <li v-for="todo in todos">
+	      {{ todo.text }}
+	    </li>
+	  </ol>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</body>
+</html>
+
+
+<!--
+
+文档 ： https://cn.vuejs.org/v2/guide/index.html#声明式渲染  
+
+命令行输入 ：   
+> app.message="xxxx";    
+< "xxxx"    
+> app2.message = '新消息'    
+< "新消息"    
+> app3.seen = false  
+< false  
+> app4.todos.push({ text: '新项目' })  
+< 4  
+
+
+-->
