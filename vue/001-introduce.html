@@ -1,0 +1,28 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+	<meta charset="UTF-8">  
+	<title>Document</title>  
+
+	<script type="text/javascript">  
+
+		function bodyOnload (){  
+
+			new Vue({  
+				el: '#app',  
+				data: {  
+					message: 'Hello Vue.js!'  
+				}  
+			});  
+		}  
+	</script>  
+</head>  
+<body onload="bodyOnload();">  
+	<div id="app">  
+		{{message}}  
+	</div>  
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>  
+</body>  
+</html>  
+
+<!-- https://cn.vuejs.org/v2/guide/index.html#声明式渲染 -->
